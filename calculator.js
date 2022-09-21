@@ -83,7 +83,7 @@ addition.addEventListener("click", () => {
   update();
   operator = "+";
   update();
-  if (!Number.isInteger(n1)) {
+  if (typeof n1 != "number") {
     n1 = +numtracker;
   } else n2 = +numtracker;
   numtracker = "";
@@ -99,7 +99,7 @@ subtraction.addEventListener("click", () => {
   update();
   operator = "-";
   update();
-  if (!Number.isInteger(n1)) {
+  if (typeof n1 != "number") {
     n1 = +numtracker;
   } else n2 = +numtracker;
   numtracker = "";
@@ -115,7 +115,7 @@ multiplication.addEventListener("click", () => {
   update();
   operator = "x";
   update();
-  if (!Number.isInteger(n1)) {
+  if (typeof n1 != "number") {
     n1 = +numtracker;
   } else n2 = +numtracker;
   numtracker = "";
@@ -131,7 +131,7 @@ division.addEventListener("click", () => {
   update();
   operator = "/";
   update();
-  if (!Number.isInteger(n1)) {
+  if (typeof n1 != "number") {
     n1 = +numtracker;
   } else n2 = +numtracker;
   numtracker = "";
