@@ -83,7 +83,9 @@ addition.addEventListener("click", () => {
   update();
   operator = "+";
   update();
-  n1 = +numtracker;
+  if (!Number.isInteger(n1)) {
+    n1 = +numtracker;
+  } else n2 = +numtracker;
   numtracker = "";
   update();
 });
@@ -97,7 +99,9 @@ subtraction.addEventListener("click", () => {
   update();
   operator = "-";
   update();
-  n1 = +numtracker;
+  if (!Number.isInteger(n1)) {
+    n1 = +numtracker;
+  } else n2 = +numtracker;
   numtracker = "";
   update();
 });
@@ -111,7 +115,9 @@ multiplication.addEventListener("click", () => {
   update();
   operator = "x";
   update();
-  n1 = +numtracker;
+  if (!Number.isInteger(n1)) {
+    n1 = +numtracker;
+  } else n2 = +numtracker;
   numtracker = "";
   update();
 });
@@ -125,7 +131,9 @@ division.addEventListener("click", () => {
   update();
   operator = "/";
   update();
-  n1 = +numtracker;
+  if (!Number.isInteger(n1)) {
+    n1 = +numtracker;
+  } else n2 = +numtracker;
   numtracker = "";
   update();
 });
@@ -135,6 +143,7 @@ const equals = document.createElement("button");
 equals.textContent = "=";
 equals.addEventListener("click", () => {
   operate(tracker, n1, n2);
+  n1 = result;
 });
 document.body.appendChild(equals);
 
