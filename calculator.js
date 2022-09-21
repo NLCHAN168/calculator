@@ -28,8 +28,7 @@ const divide = function (n1, n2) {
 };
 
 const update = function () {
-  results.textContent =
-    "Result: " + n1 + " " + operator + " " + numtracker + " = " + result;
+  results.textContent = n1 + " " + operator + " " + numtracker + " = " + result;
 };
 
 const operate = function (tracker, n1, n2) {
@@ -65,7 +64,7 @@ document.body.appendChild(calculator);
 
 const results = document.createElement("div");
 results.setAttribute("id", "results");
-results.textContent = "Result: ";
+results.textContent = "";
 calculator.appendChild(results);
 
 const buttonContainer = document.createElement("div");
