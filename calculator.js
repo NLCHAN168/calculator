@@ -2,6 +2,7 @@ let tracker = "";
 let operator = "";
 let n1 = 0;
 let n2 = 0;
+let numtracker = 0;
 
 const add = function (n1, n2) {
   tracker = "add";
@@ -35,8 +36,8 @@ for (let i = 0; i < 10; i++) {
   button.textContent = i;
   button.setAttribute("id", i);
   button.addEventListener("click", () => {
-    n1 = n2;
-    n2 = i;
+    results.textContent = "Result: " + numtracker;
+    numtracker += "" + i;
     results.textContent = "Result: " + n1 + " " + operator + " " + n2;
   });
   document.body.appendChild(button);
@@ -47,6 +48,8 @@ addition.textContent = "+";
 addition.addEventListener("click", () => {
   tracker = "add";
   operator = "+";
+  n1 = +numtracker;
+  numtracker = "";
 });
 document.body.appendChild(addition);
 
@@ -55,6 +58,8 @@ subtraction.textContent = "-";
 subtraction.addEventListener("click", () => {
   tracker = "subtract";
   operator = "-";
+  n1 = +numtracker;
+  numtracker = "";
 });
 document.body.appendChild(subtraction);
 
@@ -63,6 +68,8 @@ multiplication.textContent = "x";
 multiplication.addEventListener("click", () => {
   tracker = "multiply";
   operator = "x";
+  n1 = +numtracker;
+  numtracker = "";
 });
 document.body.appendChild(multiplication);
 
@@ -71,6 +78,8 @@ division.textContent = "/";
 division.addEventListener("click", () => {
   tracker = "divide";
   operator = "/";
+  n1 = +numtracker;
+  numtracker = "";
 });
 document.body.appendChild(division);
 
@@ -78,22 +87,34 @@ const equals = document.createElement("button");
 equals.textContent = "=";
 equals.addEventListener("click", () => {
   if (tracker == "add") {
-    results.textContent = "Result: " + add(n1, n2);
+    n2 = +numtracker;
+    numtracker = "";
+    results.textContent =
+      "Result: " + n1 + " " + operator + " " + n2 + "= " + add(n1, n2);
     n1 = 0;
     n2 = 0;
   }
   if (tracker == "subtract") {
-    results.textContent = "Result: " + subtract(n1, n2);
+    n2 = +numtracker;
+    numtracker = "";
+    results.textContent =
+      "Result: " + n1 + " " + operator + " " + n2 + "= " + subtract(n1, n2);
     n1 = 0;
     n2 = 0;
   }
   if (tracker == "multiply") {
-    results.textContent = "Result: " + multiply(n1, n2);
+    n2 = +numtracker;
+    numtracker = "";
+    results.textContent =
+      "Result: " + n1 + " " + operator + " " + n2 + "= " + multiply(n1, n2);
     n1 = 0;
     n2 = 0;
   }
   if (tracker == "divide") {
-    results.textContent = "Result: " + divide(n1, n2);
+    n2 = +numtracker;
+    numtracker = "";
+    results.textContent =
+      "Result: " + n1 + " " + operator + " " + n2 + "= " + divide(n1, n2);
     n1 = 0;
     n2 = 0;
   }
