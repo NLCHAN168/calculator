@@ -75,7 +75,7 @@ const numContainer = document.createElement("div");
 numContainer.setAttribute("id", "number-container");
 buttonContainer.appendChild(numContainer);
 
-for (let i = 0; i < 10; i++) {
+for (let i = 9; i >= 0; i--) {
   const button = document.createElement("button");
   button.textContent = i;
   button.setAttribute("id", "numbers");
