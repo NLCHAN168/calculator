@@ -59,22 +59,38 @@ const operate = function (tracker, n1, n2) {
   }
 };
 
+const calculator = document.createElement("div");
+calculator.setAttribute("id", "calculator");
+document.body.appendChild(calculator);
+
 const results = document.createElement("div");
+results.setAttribute("id", "results");
 results.textContent = "Result: ";
-document.body.appendChild(results);
+calculator.appendChild(results);
+
+const buttonContainer = document.createElement("div");
+buttonContainer.setAttribute("id", "button-container");
+calculator.appendChild(buttonContainer);
+
+const numContainer = document.createElement("div");
+numContainer.setAttribute("id", "number-container");
+buttonContainer.appendChild(numContainer);
 
 for (let i = 0; i < 10; i++) {
   const button = document.createElement("button");
   button.textContent = i;
-  button.setAttribute("id", i);
+  button.setAttribute("id", "numbers");
   button.addEventListener("click", () => {
     update();
     numtracker += "" + i;
     update();
   });
-  document.body.appendChild(button);
+  numContainer.appendChild(button);
 }
 
+const opContainer = document.createElement("div");
+opContainer.setAttribute("id", "operation-container");
+buttonContainer.appendChild(opContainer);
 const addition = document.createElement("button");
 addition.textContent = "+";
 addition.addEventListener("click", () => {
@@ -89,7 +105,7 @@ addition.addEventListener("click", () => {
   numtracker = "";
   update();
 });
-document.body.appendChild(addition);
+opContainer.appendChild(addition);
 
 const subtraction = document.createElement("button");
 subtraction.textContent = "-";
@@ -105,7 +121,7 @@ subtraction.addEventListener("click", () => {
   numtracker = "";
   update();
 });
-document.body.appendChild(subtraction);
+opContainer.appendChild(subtraction);
 
 const multiplication = document.createElement("button");
 multiplication.textContent = "x";
@@ -121,7 +137,7 @@ multiplication.addEventListener("click", () => {
   numtracker = "";
   update();
 });
-document.body.appendChild(multiplication);
+opContainer.appendChild(multiplication);
 
 const division = document.createElement("button");
 division.textContent = "/";
@@ -137,7 +153,7 @@ division.addEventListener("click", () => {
   numtracker = "";
   update();
 });
-document.body.appendChild(division);
+opContainer.appendChild(division);
 
 const equals = document.createElement("button");
 equals.textContent = "=";
@@ -145,7 +161,7 @@ equals.addEventListener("click", () => {
   operate(tracker, n1, n2);
   n1 = result;
 });
-document.body.appendChild(equals);
+opContainer.appendChild(equals);
 
 const clear = document.createElement("button");
 clear.textContent = "Clear";
@@ -158,4 +174,4 @@ clear.addEventListener("click", () => {
   numtracker = "";
   result = "";
 });
-document.body.appendChild(clear);
+opContainer.appendChild(clear);
