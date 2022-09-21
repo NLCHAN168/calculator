@@ -1,8 +1,9 @@
 let tracker = "";
 let operator = "";
-let n1 = 0;
-let n2 = 0;
-let numtracker = 0;
+let n1 = "";
+let n2 = "";
+let numtracker = "";
+let result = "";
 
 const add = function (n1, n2) {
   tracker = "add";
@@ -26,19 +27,50 @@ const divide = function (n1, n2) {
   } else return n1 / n2;
 };
 
-const operate = function (fn, n1, n2) {};
+const update = function () {
+  results.textContent =
+    "Result: " + n1 + " " + operator + " " + numtracker + " = " + result;
+};
+
+const operate = function (tracker, n1, n2) {
+  if (tracker == "add") {
+    n2 = +numtracker;
+    result = add(n1, n2);
+    update();
+    numtracker = "";
+  }
+  if (tracker == "subtract") {
+    n2 = +numtracker;
+    result = subtract(n1, n2);
+    update();
+    numtracker = "";
+  }
+  if (tracker == "multiply") {
+    n2 = +numtracker;
+    result = multiply(n1, n2);
+    update();
+    numtracker = "";
+  }
+  if (tracker == "divide") {
+    n2 = +numtracker;
+    result = divide(n1, n2);
+    update();
+    numtracker = "";
+  }
+};
 
 const results = document.createElement("div");
 results.textContent = "Result: ";
 document.body.appendChild(results);
+
 for (let i = 0; i < 10; i++) {
   const button = document.createElement("button");
   button.textContent = i;
   button.setAttribute("id", i);
   button.addEventListener("click", () => {
-    results.textContent = "Result: " + numtracker;
+    update();
     numtracker += "" + i;
-    results.textContent = "Result: " + n1 + " " + operator + " " + n2;
+    update();
   });
   document.body.appendChild(button);
 }
@@ -46,82 +78,75 @@ for (let i = 0; i < 10; i++) {
 const addition = document.createElement("button");
 addition.textContent = "+";
 addition.addEventListener("click", () => {
+  update();
   tracker = "add";
+  update();
   operator = "+";
+  update();
   n1 = +numtracker;
   numtracker = "";
+  update();
 });
 document.body.appendChild(addition);
 
 const subtraction = document.createElement("button");
 subtraction.textContent = "-";
 subtraction.addEventListener("click", () => {
+  update();
   tracker = "subtract";
+  update();
   operator = "-";
+  update();
   n1 = +numtracker;
   numtracker = "";
+  update();
 });
 document.body.appendChild(subtraction);
 
 const multiplication = document.createElement("button");
 multiplication.textContent = "x";
 multiplication.addEventListener("click", () => {
+  update();
   tracker = "multiply";
+  update();
   operator = "x";
+  update();
   n1 = +numtracker;
   numtracker = "";
+  update();
 });
 document.body.appendChild(multiplication);
 
 const division = document.createElement("button");
 division.textContent = "/";
 division.addEventListener("click", () => {
+  update();
   tracker = "divide";
+  update();
   operator = "/";
+  update();
   n1 = +numtracker;
   numtracker = "";
+  update();
 });
 document.body.appendChild(division);
 
 const equals = document.createElement("button");
 equals.textContent = "=";
 equals.addEventListener("click", () => {
-  if (tracker == "add") {
-    n2 = +numtracker;
-    numtracker = "";
-    results.textContent =
-      "Result: " + n1 + " " + operator + " " + n2 + "= " + add(n1, n2);
-    n1 = 0;
-    n2 = 0;
-  }
-  if (tracker == "subtract") {
-    n2 = +numtracker;
-    numtracker = "";
-    results.textContent =
-      "Result: " + n1 + " " + operator + " " + n2 + "= " + subtract(n1, n2);
-    n1 = 0;
-    n2 = 0;
-  }
-  if (tracker == "multiply") {
-    n2 = +numtracker;
-    numtracker = "";
-    results.textContent =
-      "Result: " + n1 + " " + operator + " " + n2 + "= " + multiply(n1, n2);
-    n1 = 0;
-    n2 = 0;
-  }
-  if (tracker == "divide") {
-    n2 = +numtracker;
-    numtracker = "";
-    results.textContent =
-      "Result: " + n1 + " " + operator + " " + n2 + "= " + divide(n1, n2);
-    n1 = 0;
-    n2 = 0;
-  }
+  operate(tracker, n1, n2);
 });
 document.body.appendChild(equals);
 
 const clear = document.createElement("button");
 clear.textContent = "Clear";
-clear.addEventListener("click", () => (results.textContent = "Result: "));
+clear.addEventListener("click", () => {
+  results.textContent = "Result: ";
+  tracker = "";
+  operator = "";
+  n1 = "";
+  n2 = "";
+  numtracker = "";
+  result = "";
+});
 document.body.appendChild(clear);
