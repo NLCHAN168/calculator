@@ -165,7 +165,7 @@ opContainer.appendChild(equals);
 const clear = document.createElement("button");
 clear.textContent = "Clear";
 clear.addEventListener("click", () => {
-  results.textContent = "Result: ";
+  results.textContent = "";
   tracker = "";
   operator = "";
   n1 = "";
